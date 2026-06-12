@@ -1,7 +1,7 @@
 /*
  * This file is part of espanso.
  *
- * Copyright  id: (), label: () id: (), label: () id: (), label: ()(C) 2019-2021 Federico Terzi
+ * Copyright (C) 2019-2021 Federico Terzi
  *
  * espanso is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,35 +66,35 @@ impl Middleware for ContextMenuMiddleware {
                     MenuItem::Simple(if *is_enabled {
                         SimpleMenuItem {
                             id: CONTEXT_ITEM_DISABLE,
-                            label: "Disable".to_string(),
+                            label: "禁用".to_string(),
                         }
                     } else {
                         SimpleMenuItem {
                             id: CONTEXT_ITEM_ENABLE,
-                            label: "Enable".to_string(),
+                            label: "启用".to_string(),
                         }
                     }),
                     MenuItem::Simple(SimpleMenuItem {
                         id: CONTEXT_ITEM_OPEN_SEARCH,
-                        label: "Open search bar".to_string(),
+                        label: "打开搜索栏 (Search)".to_string(),
                     }),
                     MenuItem::Separator,
                     MenuItem::Simple(SimpleMenuItem {
                         id: CONTEXT_ITEM_RELOAD,
-                        label: "Reload config".to_string(),
+                        label: "重新加载配置".to_string(),
                     }),
                     MenuItem::Simple(SimpleMenuItem {
                         id: CONTEXT_ITEM_OPEN_CONFIG_FOLDER,
-                        label: "Open config folder".to_string(),
+                        label: "打开配置目录".to_string(),
                     }),
                     MenuItem::Simple(SimpleMenuItem {
                         id: CONTEXT_ITEM_SHOW_LOGS,
-                        label: "Show logs".to_string(),
+                        label: "查看系统日志".to_string(),
                     }),
                     MenuItem::Separator,
                     MenuItem::Simple(SimpleMenuItem {
                         id: CONTEXT_ITEM_EXIT,
-                        label: "Exit espanso".to_string(),
+                        label: "退出 Espanso".to_string(),
                     }),
                 ];
 
@@ -103,14 +103,14 @@ impl Middleware for ContextMenuMiddleware {
                         0,
                         MenuItem::Simple(SimpleMenuItem {
                             id: CONTEXT_ITEM_SECURE_INPUT_EXPLAIN,
-                            label: "Why is Espanso not working?".to_string(),
+                            label: "为什么 Espanso 无法正常工作？".to_string(),
                         }),
                     );
                     items.insert(
                         1,
                         MenuItem::Simple(SimpleMenuItem {
                             id: CONTEXT_ITEM_SECURE_INPUT_TRIGGER_WORKAROUND,
-                            label: "Launch SecureInput auto-fix".to_string(),
+                            label: "启动安全输入模式自动修复".to_string(),
                         }),
                     );
                     items.insert(2, MenuItem::Separator);
