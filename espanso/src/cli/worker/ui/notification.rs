@@ -37,41 +37,41 @@ impl<'a> NotificationManager<'a> {
     }
 
     pub fn notify_start(&self) {
-        self.notify("Espanso is running!");
+        self.notify("Espanso 已启动并在后台运行中！");
     }
 
     pub fn notify_config_reloaded(&self, is_manual_restart: bool) {
         if is_manual_restart {
-            self.notify("Configuration reloaded!");
+            self.notify("配置已重新加载！");
         } else {
             self.notify(
-        "Configuration reloaded! Espanso automatically loads new changes as soon as you save them.",
+        "配置已重新加载！Espanso 会在您保存修改后自动应用。",
       );
         }
     }
 
     pub fn notify_keyboard_layout_reloaded(&self) {
-        self.notify("Updated keyboard layout!");
+        self.notify("键盘布局已更新！");
     }
 }
 
 impl espanso_engine::process::NotificationManager for NotificationManager<'_> {
-    fn notify_status_change(&self, enabled: bool) {
+    fn notify_status_change(&self, status: bool) {
         // Don't notify the status change outside Linux for now
         if !cfg!(target_os = "linux") {
             return;
         }
 
-        if enabled {
-            self.notify("Espanso enabled!");
+        if status {
+            self.notify("Espanso 已启用！");
         } else {
-            self.notify("Espanso disabled!");
+            self.notify("Espanso 已禁用！");
         }
     }
 
     fn notify_rendering_error(&self) {
         self.notify(
-            "An error occurred during rendering, please examine the logs for more information.",
+            "渲染规则时发生错误，请查看系统日志以获取详细信息。",
         );
     }
 }

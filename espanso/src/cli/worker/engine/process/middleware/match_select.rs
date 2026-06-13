@@ -77,7 +77,7 @@ impl MatchSelector for MatchSelectorAdapter<'_> {
             .collect();
 
         let hint = if is_search {
-            Some("Search matches by content or trigger (or type > to see commands)")
+            Some("输入内容或触发词搜索（输入 > 查看快捷命令）")
         } else {
             None
         };
