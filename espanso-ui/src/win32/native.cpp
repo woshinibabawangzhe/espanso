@@ -321,8 +321,9 @@ void _insert_single_menu(HMENU parent, json item) {
     uint32_t raw_id = item["id"];
 
     // Convert to wide chars
-    std::wstring wide_label(label.length(), L'#');
-    mbstowcs(&wide_label[0], label.c_str(), label.length());
+    int size_needed = MultiByteToWideChar(CP_UTF8, 0, label.c_str(), (int)label.length(), NULL, 0);
+    std::wstring wide_label(size_needed, 0);
+    MultiByteToWideChar(CP_UTF8, 0, label.c_str(), (int)label.length(), &wide_label[0], size_needed);
 
     InsertMenu(parent, -1, MF_BYPOSITION | MF_STRING, raw_id,
                wide_label.c_str());
@@ -339,8 +340,9 @@ void _insert_sub_menu(HMENU parent, json items) {
             std::string label = item["label"];
 
             // Convert to wide chars
-            std::wstring wide_label(label.length(), L'#');
-            mbstowcs(&wide_label[0], label.c_str(), label.length());
+            int size_needed = MultiByteToWideChar(CP_UTF8, 0, label.c_str(), (int)label.length(), NULL, 0);
+            std::wstring wide_label(size_needed, 0);
+            MultiByteToWideChar(CP_UTF8, 0, label.c_str(), (int)label.length(), &wide_label[0], size_needed);
 
             InsertMenu(parent, -1, MF_BYPOSITION | MF_POPUP, (UINT_PTR)subMenu,
                        wide_label.c_str());
